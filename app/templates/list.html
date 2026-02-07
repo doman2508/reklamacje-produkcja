@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Lista zgłoszeń</h2>
+
+  {% if reklamacje %}
+    <table border="1" cellpadding="6" cellspacing="0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Data zgłoszenia</th>
+          <th>Tytuł</th>
+          <th>Ilość</th>
+          <th>Status</th>
+          <th>Zgłaszający</th>
+          <th>Claim number</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for reklamacja in reklamacje %}
+          <tr>
+            <td>{{ reklamacja[0] }}</td>
+            <td>{{ reklamacja[1] }}</td>
+            <td>{{ reklamacja[2] }}</td>
+            <td>{{ reklamacja[3] }}</td>
+            <td>{{ reklamacja[4] }}</td>
+            <td>{{ reklamacja[5] or "-" }}</td>
+            <td>{{ reklamacja[6] or "-" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Brak zgłoszeń w bazie danych.</p>
+  {% endif %}
+{% endblock %}

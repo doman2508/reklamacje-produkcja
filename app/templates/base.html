@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reklamacje - panel</title>
+  </head>
+  <body>
+    <header>
+      <h1>Reklamacje produkcyjne</h1>
+      <nav>
+        <a href="{{ url_for('list_view') }}">Lista zgłoszeń</a> |
+        <a href="{{ url_for('add_view') }}">Dodaj zgłoszenie</a>
+      </nav>
+      <hr />
+    </header>
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>
