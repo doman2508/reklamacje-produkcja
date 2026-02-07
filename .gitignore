@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+
+# SQLite database
+data/*.db
+
+# VS Code
+.vscode/
+
