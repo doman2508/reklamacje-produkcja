@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Dodaj zgłoszenie</h2>
+
+  <form method="post" action="{{ url_for('add_view') }}">
+    <p>
+      <label for="data_zgloszenia">Data zgłoszenia:</label><br />
+      <input type="date" id="data_zgloszenia" name="data_zgloszenia" required />
+    </p>
+
+    <p>
+      <label for="tytul_zgloszenia">Tytuł zgłoszenia:</label><br />
+      <input type="text" id="tytul_zgloszenia" name="tytul_zgloszenia" required />
+    </p>
+
+    <p>
+      <label for="opis">Opis:</label><br />
+      <textarea id="opis" name="opis" rows="4" cols="40"></textarea>
+    </p>
+
+    <p>
+      <label for="ilosc">Ilość:</label><br />
+      <input type="number" id="ilosc" name="ilosc" min="1" required />
+    </p>
+
+    <p>
+      <label for="zglaszajacy">Zgłaszający:</label><br />
+      <input type="text" id="zglaszajacy" name="zglaszajacy" />
+    </p>
+
+    <p>
+      <label for="kod_wyrobu">Kod wyrobu:</label><br />
+      <input type="text" id="kod_wyrobu" name="kod_wyrobu" />
+    </p>
+
+    <p>
+      <label for="nazwa_wyrobu">Nazwa wyrobu:</label><br />
+      <input type="text" id="nazwa_wyrobu" name="nazwa_wyrobu" />
+    </p>
+
+    <p>
+      <label for="kkw">KKW:</label><br />
+      <input type="text" id="kkw" name="kkw" />
+    </p>
+
+    <p>
+      <label for="claim_number">Claim number:</label><br />
+      <input type="text" id="claim_number" name="claim_number" />
+    </p>
+
+    <p>
+      <button type="submit">Zapisz zgłoszenie</button>
+    </p>
+  </form>
+{% endblock %}
