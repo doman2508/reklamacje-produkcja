@@ -97,3 +97,38 @@ def add_reklamacja(
         )
         connection.commit()
         return int(cursor.lastrowid)
+    
+def list_reklamacje():
+    """
+    Returns all nonconformance claims from the database.
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT
+            id,
+            data_zgloszenia,
+            tytul_zgloszenia,
+            ilosc,
+            status,
+            zglaszajacy,
+            claim_number
+        FROM reklamacje
+        ORDER BY id DESC
+    """)
+
+    rows = cursor.fetchall()
+    conn.close()
+
+    return rows
+
+    
+    
+if __name__ == "__main__":
+    # Initialize database and create tables on direct run
+    conn = get_connection()
+    conn.close()
+    print("Baza SQLite została utworzona.")
+
+
