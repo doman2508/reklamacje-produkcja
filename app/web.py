@@ -1,6 +1,8 @@
 """Simple Flask frontend for the reklamacje app."""
 
+
 from __future__ import annotations
+from app.api import api
 
 from flask import Flask, redirect, render_template, request, url_for
 
@@ -11,6 +13,8 @@ from app.db import list_reklamacje_by_status
 
 
 app = Flask(__name__)
+app.register_blueprint(api)
+
 
 
 @app.get("/")
