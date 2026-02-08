@@ -1,3 +1,18 @@
+
+<form method="get">
+    <label>Status:</label>
+    <select name="status">
+        <option value="">-- wszystkie --</option>
+        <option value="NOWE" {% if selected_status == "NOWE" %}selected{% endif %}>NOWE</option>
+        <option value="W_TRAKCIE" {% if selected_status == "W_TRAKCIE" %}selected{% endif %}>W TRAKCIE</option>
+        <option value="ZAMKNIETE" {% if selected_status == "ZAMKNIETE" %}selected{% endif %}>ZAMKNIĘTE</option>
+    </select>
+    <button type="submit">Filtruj</button>
+</form>
+
+<hr>
+
+
 {% extends "base.html" %}
 
 {% block content %}

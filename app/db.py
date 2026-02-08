@@ -131,4 +131,28 @@ if __name__ == "__main__":
     conn.close()
     print("Baza SQLite została utworzona.")
 
+def list_reklamacje_by_status(status):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT
+            id,
+            data_zgloszenia,
+            tytul_zgloszenia,
+            ilosc,
+            status,
+            zglaszajacy,
+            claim_number
+        FROM reklamacje
+        WHERE status = ?
+        ORDER BY id DESC
+    """, (status,))
+
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
+
+
+
 

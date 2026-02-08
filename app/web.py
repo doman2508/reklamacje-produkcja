@@ -6,14 +6,30 @@ from flask import Flask, redirect, render_template, request, url_for
 
 from app.db import add_reklamacja, list_reklamacje
 
+from flask import request
+from app.db import list_reklamacje_by_status
+
+
 app = Flask(__name__)
 
 
 @app.get("/")
 def list_view():
-    """Show all claims in a simple table."""
-    reklamacje = list_reklamacje()
-    return render_template("list.html", reklamacje=reklamacje)
+    """Show claims, optionally filtered by status."""
+    status = request.args.get("status")
+    print("STATUS Z URL:", status)
+
+    if status:
+        reklamacje = list_reklamacje_by_status(status)
+    else:
+        reklamacje = list_reklamacje()
+
+    return render_template(
+        "list.html",
+        reklamacje=reklamacje,
+        selected_status=status
+    )
+
 
 
 @app.route("/add", methods=["GET", "POST"])
